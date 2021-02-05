@@ -47,13 +47,7 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") String employeeId,
                                                    @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
-        Employee employee = employeeService.getEmployeeById(employeeId);
-        employee.setEmailAddress(employeeDetails.getEmailAddress());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setFirstName(employeeDetails.getFirstName());
-        employee.setPassportNumber(employeeDetails.getPassportNumber());
-        employee.setBirthDay(employeeDetails.getBirthDay());
-        final Employee updatedEmployee = employeeService.saveEmployee(employee);
+        Employee updatedEmployee = employeeService.updateEmployee(employeeId, employeeDetails);
         return ResponseEntity.ok(updatedEmployee);
     }
 
