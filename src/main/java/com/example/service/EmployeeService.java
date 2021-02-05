@@ -39,7 +39,8 @@ public class EmployeeService {
         return saveEmployee(employee);
     }
 
-    public void deleteEmployee(Employee employee) {
+    public void deleteEmployee(String employeeId) throws ResourceNotFoundException {
+        Employee employee = getEmployeeById(employeeId);
         employeeRepository.delete(employee);
     }
 }
